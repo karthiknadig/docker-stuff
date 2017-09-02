@@ -12,8 +12,10 @@ RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 \
  && rm -rf /var/lib/apt/lists/* \
  && apt-get clean \
- && apt-get update --fix-missing && apt-get update\
- && apt-get install -y dotnet-dev-1.0.4 r-base-dev libexplain51 libzip4 libc6 git
+ && apt-get update --fix-missing && apt-get update \
+ && apt-get install -y dotnet-dev-1.0.4 libexplain51 libzip4 libc6 git lshw
+
+RUN apt-get install -y r-base-dev=3.4.1*
 
 RUN apt upgrade -y
 
@@ -24,5 +26,8 @@ RUN find -name *.deb | xargs dpkg -i
 RUN apt-get -f install
 RUN cp /tmp/rtvsfiles/docker-stuff/server.pfx /etc/rtvs
 RUN rm -R /tmp/rtvsfiles
+
+RUN useradd --create-home ruser1
+RUN echo "ruser1:foobar" | chpasswd
 
 EXPOSE 5444
