@@ -17,7 +17,7 @@ RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet
 
 RUN apt upgrade -y
 
-RUN mkdir /tmp/rtvsfiles && cd /tmp/rtvsfiles && git clone --recurse-submodules https://github.com/karthiknadig/docker-stuff.git && cd /
+RUN mkdir /tmp/rtvsfiles && cd /tmp/rtvsfiles && git clone https://github.com/karthiknadig/docker-stuff.git && cd /
 
 RUN cd /tmp/rtvsfiles 
 RUN find -name *.deb | xargs dpkg -i
