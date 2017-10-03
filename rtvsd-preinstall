@@ -3,7 +3,7 @@
 apt-get update
 
 apt-get install -y software-properties-common python-software-properties
-apt-get install -y apt-transport-https
+apt-get install -y apt-transport-https wget
 
 
 sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
